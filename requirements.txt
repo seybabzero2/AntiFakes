@@ -1,0 +1,4 @@
+flask
+transformers
+beautifulsoup4
+requests
