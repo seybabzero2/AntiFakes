@@ -1,0 +1,126 @@
+
+        body {
+            background-color: #1f1f1f;
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            color: white;
+            margin: auto;
+            transition: filter 2s ease; /* Плавний перехід для блюру */
+            filter: blur(10px); /* Початковий блюр */
+        }
+
+        .content {
+            display: none; /* Спочатку ховаємо весь контент */
+            margin-top: 40px;
+        }
+
+        .logo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: white;
+            z-index: 1; /* Розташовуємо логотип поверх контенту */
+            transition: all 1.5s ease; /* Додаємо плавний перехід для переміщення логотипу */
+        }
+
+        /* Стилі для переміщеного логотипу */
+        .logo.top-left {
+            top: 20px;
+            left: 10%;
+            transform: translate(0, 0); /* Скидаємо початкові відступи для нової позиції */
+            font-size: 50px; /* Зменшуємо розмір */
+        }
+
+        /* Стилі для контенту */
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 60px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .class_bla_bla {
+            background-color: #2e2d2d;
+            width: 77%;
+            color: white;
+            height: 40px;
+            font-size: 25px;
+            padding: 10px;
+            border-radius: 20px;
+            border: 2px solid rgb(255, 255, 255);
+            outline: none;
+            margin-right: 10px;
+        }
+
+        .submit-button {
+            border: 2px solid white;
+            height: 50px;
+            width: 50px;
+            font-size: 25px;
+            padding: 7px 20px;
+            border-radius: 30px;
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            transition: 0.5s;
+            border-radius: 10px;
+        }
+
+        .response-box {
+            margin: auto;
+            height: 500px;
+            border: 2px solid #ffffff;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            align-items: center;
+            background-color: #2e2d2d;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .material-icons {
+            padding: 15px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .unblur { /* Клас для зняття блюру */
+            filter: none;
+        }
+                .by-silence {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            flex: right;
+            font-size: 20px;
+            color: white;
+            opacity: 0;
+            transition: opacity 1.5s ease; /* Плавний ефект появи */
+        }
+
+        .unblur { /* Клас для зняття блюру */
+            filter: none;
+        }
+
+        /* Поява підпису після розблюру */
+        .unblur .by-silence {
+            opacity: 1;
+        }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="hacaton.css">
+    <title>HACATON</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="logo">BL1ND</div> <!-- Логотип, що спочатку по центру -->
+
+    <div class="by-silence">By S1L3NC3</div> <!-- Підпис у правому верхньому куті -->
+
+    <div class="content"> <!-- Весь контент сайту -->
+        <form id="verificationForm">
+            <input type="text" id="queryInput" class="class_bla_bla" placeholder="Enter your query...">
+            <div class="submit-button" id="submitBtn">
+                <img src="https://static-00.iconduck.com/assets.00/send-icon-2048x1863-u8j8xnb6.png" class="material-icons">
+            </div>
+        </form>
+        <div id="response" class="response-box"></div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                document.body.classList.add('unblur'); 
+                document.querySelector('.content').style.display = 'block'; 
+                document.querySelector('.logo').classList.add('top-left');
+            }, 500); 
+        };
+
+        // Функція для відправки запиту на сервер Flask
+        document.getElementById('submitBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Відключаємо стандартну поведінку форми
+            const query = document.getElementById('queryInput').value; // Отримуємо введений текст
+
+            // Відправляємо запит на Flask сервер
+            fetch('/verify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query: query }), // Надсилаємо запит
+            })
+            .then(response => response.json()) // Обробляємо відповідь як JSON
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('response').innerHTML = `<p>Error: ${data.error}</p>`;
+                } else {
+                    // Виводимо результати перевірки
+                    let resultHTML = `<p><strong>Query:</strong> ${data.query}</p>`;
+                    data.evidence.forEach((evidence, index) => {
+                        resultHTML += `
+                            <div>
+                                <p><strong>Site ${index + 1}:</strong> ${evidence.site}</p>
+                                <p><strong>Summary:</strong> ${evidence.summary}</p>
+                                <p><strong>Verdict:</strong> ${evidence.verdict}</p>
+                                <a href="${evidence.url}" target="_blank">Read more</a>
+                            </div>
+                        `;
+                    });
+                    document.getElementById('response').innerHTML = resultHTML;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('response').innerHTML = `<p>An error occurred. Please try again later.</p>`;
+            });
+        });
+    </script>
+
+</body>
+</html>
