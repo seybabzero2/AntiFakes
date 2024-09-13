@@ -100,7 +100,6 @@ PyGObject==3.42.1
 PyJWT==2.3.0
 pyparsing==2.4.7
 pyTelegramBotAPI==4.22.1
-python-apt==2.4.0
 PyYAML==5.4.1
 regex==2024.7.24
 requests==2.32.3
