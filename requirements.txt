@@ -3,4 +3,4 @@ transformers
 requests
 jsonify
 bs4
-urllib.parse
+urlparse4
