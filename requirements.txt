@@ -3,3 +3,4 @@ transformers
 requests
 jsonify
 bs4
+sentencepiece
