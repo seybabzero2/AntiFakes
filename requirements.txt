@@ -3,6 +3,3 @@ transformers
 requests
 jsonify
 bs4
-urlparse4
---upgrade setuptools 
---upgrade wheel
