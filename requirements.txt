@@ -4,3 +4,5 @@ requests
 jsonify
 bs4
 urlparse4
+setuptools 
+wheel
