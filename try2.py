@@ -3,6 +3,7 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration, pipeline
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urlencode
+import os
 
 app = Flask(__name__)
 
@@ -113,4 +114,6 @@ def verify():
     return jsonify(result)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    #app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
